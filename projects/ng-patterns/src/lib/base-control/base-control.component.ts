@@ -17,6 +17,7 @@ export class BaseControlComponent implements OnInit, ControlValueAccessor {
   protected onTouched: any = Function.prototype;
 
   protected _value: any = null;
+  protected _disabled = false;
 
   constructor() {
   }
@@ -33,10 +34,11 @@ export class BaseControlComponent implements OnInit, ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
+    this._disabled = isDisabled;
   }
 
-  writeValue(obj: any): void {
-    this.value = obj;
+  writeValue(val: any): void {
+    this.value = val;
   }
 
   get value() {
@@ -45,6 +47,10 @@ export class BaseControlComponent implements OnInit, ControlValueAccessor {
 
   set value(val) {
     this._value = val;
+  }
+
+  get disabled() {
+    return this._disabled;
   }
 
 }
